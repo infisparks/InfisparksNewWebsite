@@ -7320,6 +7320,7 @@ textarea.form-control.is-invalid {
     flex-wrap: inherit;
     align-items: center;
     justify-content: space-between;
+    height: 80px;
 }
 .navbar-brand {
     padding-top: var(--bs-navbar-brand-padding-y);

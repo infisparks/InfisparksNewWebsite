@@ -561,7 +561,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (preloader) {
       setTimeout(function () {
         preloader.style.display = "none";
-      }, 300);
+      }, 700);
     }
   });
 
