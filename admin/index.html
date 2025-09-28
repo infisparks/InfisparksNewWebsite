@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infispark Dashboard</title>
+    <!-- Load Tailwind CSS for modern styling and responsiveness -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <!-- Load Iconify for professional icons -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+    <!-- Firebase SDK Imports for Realtime Database -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+
+    <style>
+        /* Custom styles to apply the complex gradient background */
+        .admin-bg-gradient {
+            background: linear-gradient(135deg, 
+                #040B0E 0%,      /* Very Dark Blue/Black */
+                #1C1A30 20%,     /* Dark Purple/Black */
+                #122244 40%,     /* Dark Corporate Blue */
+                #9A4F44 60%,     /* Rusty Red/Brown */
+                #A46963 80%,     /* Muted Rose Brown */
+                #090A0C 100%);   /* Almost Black */
+            background-attachment: fixed;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Styling for the table wrapper for scroll on mobile */
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        /* Custom scrollbar for better aesthetics on webkit browsers (Chrome/Safari) */
+        .table-responsive::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .table-responsive::-webkit-scrollbar-thumb {
+            background-color: #A46963;
+            border-radius: 4px;
+        }
+
+        .table-responsive::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        /* START: Requested Logo CSS */
+        .logo {
+            --logo-height: 2rem;
+            height: var(--logo-height);
+            margin-bottom: 40px; /* Separates logo area from the main content */
+        }
+        .logo__img {
+            max-width: 130px;
+            max-height: 130px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+        /* END: Requested Logo CSS */
+    </style>
+</head>
+
+<body class="admin-bg-gradient min-h-screen text-gray-100 p-4 sm:p-8">
+
+    <!-- Header and Logo -->
+    <header class="flex items-center justify-between px-2 sm:px-0 mb-10">
+        <!-- Logo (Top Left) - Using the custom CSS classes -->
+        <div class="logo">
+            <img src="/images/InfiSpArk.png" alt="Infispark Logo" class="logo__img">
+        </div>
+        
+        <!-- Theme Toggle (Placeholder - since original had it, keeping the spot) -->
+        <!-- <div>
+            <iconify-icon icon="bi:moon-stars-fill" class="text-xl text-gray-400"></iconify-icon>
+        </div> -->
+    </header>
+
+    <!-- Dashboard Title - Updated for professional design and better color gradient -->
+    <h1 class="text-center text-5xl sm:text-5xl font-black mb-12 text-transparent bg-clip-text 
+               bg-gradient-to-r from-blue-300 via-cyan-400 to-indigo-500 tracking-wide drop-shadow-lg">
+        Infispark Dashboard
+    </h1>
+
+    <!-- Message Display Container -->
+    <div class="max-w-7xl mx-auto bg-gray-900/90 backdrop-blur-md rounded-xl shadow-2xl p-6 sm:p-8">
+
+        <h2 class="text-2xl font-semibold mb-6 text-gray-50 border-b border-gray-700 pb-3">Messages</h2>
+
+        <!-- Table Container (Responsive Scroll) -->
+        <div class="table-responsive">
+            <table class="min-w-full divide-y divide-gray-700 rounded-lg overflow-hidden">
+                <!-- Table Head -->
+                <thead class="bg-gray-800/80 sticky top-0">
+                    <tr>
+                        <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-gray-300">Sr.no</th>
+                        <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-gray-300">First Name</th>
+                        <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-gray-300">Email Address</th>
+                        <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-gray-300">Subject</th>
+                        <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-gray-300 min-w-[200px]">Message</th>
+                        <th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-gray-300 min-w-[150px]">Date Submitted</th>
+                    </tr>
+                </thead>
+                <!-- Table Body - Data gets populated here -->
+                <tbody class="divide-y divide-gray-800" id="messagesTableBody">
+                    <tr>
+                        <td colspan="6" class="p-6 text-center text-gray-400">Loading messages...</td>
+                    </tr>
+                    <!-- Data will be dynamically inserted by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- JavaScript for Firebase Initialization and Data Fetching -->
+    <script>
+        // Firebase Configuration (Provided by user)
+        const firebaseConfig = {
+            apiKey: "AIzaSyCwPwLmL7x5tpxOidGkOGoNkAPqZQ3uAiE",
+            authDomain: "infispark-new-website.firebaseapp.com",
+            databaseURL: "https://infispark-new-website-default-rtdb.firebaseio.com",
+            projectId: "infispark-new-website",
+            storageBucket: "infispark-new-website.firebasestorage.app",
+            messagingSenderId: "425560900151",
+            appId: "1:425560900151:web:f36a579b98d24f34d175b2",
+            measurementId: "G-VCZ9D4G7N4"
+        };
+
+        // Initialize Firebase
+        try {
+            const app = firebase.initializeApp(firebaseConfig);
+            const database = app.database();
+            console.log("Firebase initialized successfully.");
+            
+            // Start loading data when the page loads
+            window.onload = fetchMessages; 
+
+        } catch (error) {
+            console.error("Firebase Initialization Error:", error);
+            document.getElementById('messagesTableBody').innerHTML = `
+                <tr><td colspan="6" class="p-6 text-center text-red-400">Error loading Firebase: ${error.message}</td></tr>
+            `;
+        }
+        
+        // Helper function to format timestamp
+        function formatTimestamp(isoString) {
+            try {
+                const date = new Date(isoString);
+                return date.toLocaleString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+            } catch {
+                return "N/A";
+            }
+        }
+
+
+        /**
+         * Recursively processes the nested data structure (Year/Month/Date/Message)
+         * and collects all individual messages into a flat array.
+         * @param {object} nestedData - The data snapshot value from Firebase.
+         * @returns {Array<object>} A flat array of message objects.
+         */
+        function flattenMessages(nestedData) {
+            let messages = [];
+            // Check for the top-level 'Message' node presence
+            if (nestedData && nestedData.Message) {
+                const messagesByYear = nestedData.Message;
+                // Year iteration
+                for (const yearKey in messagesByYear) {
+                    const messagesByMonth = messagesByYear[yearKey];
+                    if (messagesByMonth) {
+                        // Month iteration
+                        for (const monthKey in messagesByMonth) {
+                            const messagesByDate = messagesByMonth[monthKey];
+                            if (messagesByDate) {
+                                // Date iteration
+                                for (const dateKey in messagesByDate) {
+                                    const messagesByPushKey = messagesByDate[dateKey];
+                                    if (messagesByPushKey) {
+                                        // Individual Message iteration (by push key)
+                                        for (const pushKey in messagesByPushKey) {
+                                            const messageData = messagesByPushKey[pushKey];
+                                            if (messageData) {
+                                                messages.push({
+                                                    ...messageData,
+                                                    id: pushKey,
+                                                    path: `${yearKey}/${monthKey}/${dateKey}`
+                                                });
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            // Sort by timestamp if available, most recent first
+            messages.sort((a, b) => new Date(b.timestamp || 0) - new Date(a.timestamp || 0));
+
+            return messages;
+        }
+
+
+        /**
+         * Fetches all messages from the Realtime Database and renders them in the table.
+         * It uses an onSnapshot listener for real-time updates.
+         */
+        function fetchMessages() {
+            const tableBody = document.getElementById('messagesTableBody');
+            const messagesRef = firebase.database().ref('Message');
+            let serialNumber = 1;
+
+            // Use on() for real-time listening
+            messagesRef.on('value', (snapshot) => {
+                const data = snapshot.val();
+                const allMessages = flattenMessages({ Message: data });
+                
+                tableBody.innerHTML = ''; // Clear existing rows
+
+                if (allMessages.length === 0) {
+                    tableBody.innerHTML = `
+                        <tr>
+                            <td colspan="6" class="p-6 text-center text-gray-500">No contact submissions found.</td>
+                        </tr>
+                    `;
+                    return;
+                }
+
+                serialNumber = 1;
+                allMessages.forEach(msg => {
+                    const row = document.createElement('tr');
+                    row.className = 'hover:bg-gray-800 transition duration-150 ease-in-out';
+                    
+                    // Sanitize input data to prevent XSS (basic measure)
+                    const safe = (text) => text ? String(text).replace(/</g, "&lt;").replace(/>/g, "&gt;") : '';
+
+                    row.innerHTML = `
+                        <td class="whitespace-nowrap py-4 px-3 text-sm font-medium text-gray-300">${serialNumber++}</td>
+                        <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">${safe(msg.firstName)}</td>
+                        <td class="whitespace-nowrap py-4 px-3 text-sm text-blue-400 hover:text-blue-300">
+                            <a href="mailto:${safe(msg.emailAddress)}" title="Email ${safe(msg.firstName)}">${safe(msg.emailAddress)}</a>
+                        </td>
+                        <td class="whitespace-nowrap py-4 px-3 text-sm font-medium text-gray-300">${safe(msg.subject)}</td>
+                        <td class="py-4 px-3 text-sm text-gray-400 max-w-sm overflow-hidden text-ellipsis">${safe(msg.message)}</td>
+                        <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-500">${formatTimestamp(msg.timestamp)}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+
+            }, (error) => {
+                console.error("Firebase Data Read Error:", error);
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="6" class="p-6 text-center text-red-400">Failed to load data: ${error.message}. Check database rules.</td>
+                    </tr>
+                `;
+            });
+        }
+    </script>
+
+</body>
+
+</html>
