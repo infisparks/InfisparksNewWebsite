@@ -153,21 +153,43 @@
             </div>
             <!--Banner Section End-->
             <!--About Section-->
-            <div class="about-1 section-space-y bg-body-tertiary">
-                <div class="section-space-sm-bottom">
+            <div class="about-1 section-space-y"
+                style="background-color: #1e2228; position: relative; overflow: hidden;">
+                <style>
+                    .about-1-bg-effect::before {
+                        content: '';
+                        position: absolute;
+                        top: 50%;
+                        left: 10%;
+                        /* Spotlight from the left */
+                        width: 500px;
+                        height: 500px;
+                        background: rgba(188, 178, 100, 0.2);
+                        /* Muted olive/yellowish glow */
+                        border-radius: 50%;
+                        transform: translate(-50%, -50%);
+                        filter: blur(150px);
+                        z-index: 0;
+                        pointer-events: none;
+                    }
+                </style>
+                <div class="about-1-bg-effect" style="position: absolute; inset: 0; z-index: 0;"></div>
+
+                <div class="section-space-sm-bottom" style="position: relative; z-index: 1;">
                     <div class="container">
-                        <div class="row g-4 justify-content-center">
+                        <div class="row g-4">
                             <div class="col-md-10 col-lg-8">
-                                <div class="text-center">
+                                <div class="text-start">
                                     <span
                                         class="btn btn-sm align-items-center bg-primary-emphasis hover:bg-primary-emphasis text-primary-subtle hover:text-primary-subtle cursor-default mb-4">
                                         <iconify-icon icon="uim:check-circle"
                                             class="align-middle fs-20 flex-shrink-0"></iconify-icon>
                                         <span class="d-inline-block flex-grow-1 fw-medium"> About Us </span>
                                     </span>
-                                    <h3 class="max-text-4 mx-auto"> Our Mission: To Empower Your Business with Custom
+                                    <h3 class="max-text-4 text-light"> Our Mission: To Empower Your Business with Custom
                                         Software </h3>
-                                    <p class="mb-0 fw-semibold"> Infisparks is a leading IT and software company
+                                    <p class="mb-0 fw-semibold text-light text-opacity-70"> Infisparks is a leading IT
+                                        and software company
                                         dedicated to crafting custom software solutions that drive growth, enhance user
                                         experience, and provide a competitive edge for businesses of all sizes. </p>
                                 </div>
@@ -175,7 +197,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="container">
+                <div class="container" style="position: relative; z-index: 1;">
                     <div class="row g-4 justify-content-center">
                         <div class="col-md-10 col-lg-8">
                             <div class="text-center">
@@ -184,11 +206,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="section-space-md-top">
+                <div class="section-space-md-top" style="position: relative; z-index: 1;">
                     <div class="container">
                         <div class="row justify-content-center g-4">
                             <div class="col-md-8 col-xl-6">
-                                <h6 class="mb-0 fs-20 text-center"> Trusted by businesses in various industries </h6>
+                                <h6 class="mb-0 fs-20 text-center text-light"> Trusted by businesses in various
+                                    industries </h6>
                             </div>
                             <div class="col-12">
                                 <ul class="list list-row flex-wrap gap-6 justify-content-center align-items-center">
@@ -227,23 +250,6 @@
                         </div>
                     </div>
                 </div>
-                <svg xmlns="http://www.w3.org/2000/svg" width="931" height="815" viewBox="0 0 931 815" fill="none"
-                    class="about-1__shape">
-                    <g filter="url(#filter0_f_8001_8009)">
-                        <path
-                            d="M724.978 256.138C748.883 223.446 782.903 148 829.407 148C868.323 148 861.752 261.729 793.81 356.036C636.472 539.564 520.855 548 416.426 548C311.998 548 267 495.048 267 462.356C267 429.663 298.454 383.138 468.309 383.138C638.162 383.138 701.072 288.831 724.978 256.138Z"
-                            fill="#6328FF" fill-opacity="0.5" class="about-1__path"></path>
-                    </g>
-                    <defs>
-                        <filter id="filter0_f_8001_8009" x="0.333405" y="-118.667" width="1119.59" height="933.333"
-                            filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                            <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
-                            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend>
-                            <feGaussianBlur stdDeviation="133.333" result="effect1_foregroundBlur_8001_8009">
-                            </feGaussianBlur>
-                        </filter>
-                    </defs>
-                </svg>
             </div>
             <!--About Section End-->
             <!--Our Services Section-->
@@ -331,7 +337,7 @@
             </div>
             <!--Our Services Section End-->
             <!-- Timeline Section -->
-            <!-- <div class="section-space-top section-space-md-bottom bg-body-tertiary">
+            <div class="section-space-top section-space-md-bottom bg-body-tertiary">
                 <div class="section-space-md-bottom">
                     <div class="container">
                         <div class="row">
@@ -568,7 +574,7 @@
                         </div>
                     </div>
                 </div>
-            </div> -->
+            </div>
             <!-- Timeline Section End -->
             <!-- CTA -->
             <!-- <div class="container">
@@ -911,32 +917,14 @@
                             </div>
                         </div>
                     </div>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="931" height="815" viewBox="0 0 931 815" fill="none"
-                        class="testimonial-section-1__shape">
-                        <g filter="url(#filter0_f_8001_8009b)">
-                            <path
-                                d="M724.978 256.138C748.883 223.446 782.903 148 829.407 148C868.323 148 861.752 261.729 793.81 356.036C636.472 539.564 520.855 548 416.426 548C311.998 548 267 495.048 267 462.356C267 429.663 298.454 383.138 468.309 383.138C638.162 383.138 701.072 288.831 724.978 256.138Z"
-                                fill="#6328FF" fill-opacity="0.5" class="testimonial-section-1__path"></path>
-                        </g>
-                        <defs>
-                            <filter id="filter0_f_8001_8009b" x="0.333405" y="-118.667" width="1119.59" height="933.333"
-                                filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
-                                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape">
-                                </feBlend>
-                                <feGaussianBlur stdDeviation="133.333" result="effect1_foregroundBlur_8001_8009">
-                                </feGaussianBlur>
-                            </filter>
-                        </defs>
-                    </svg>
                 </div>
             </div>
             <!-- Testimonial Section End -->
-            <div class="section-space-md-y bg-body-tertiary">
+            <!-- <div class="section-space-md-y bg-body-tertiary"> -->
 
 
-                <!-- Advertisement Section -->
-                <!-- <div class="section-space-md-y">
+            <!-- Advertisement Section -->
+            <!-- <div class="section-space-md-y">
                     <div class="container">
                         <div class="row">
                             <div class="col-12">
@@ -957,12 +945,12 @@
                         </div>
                     </div>
                 </div> -->
-                <!-- Advertisement Section End -->
+            <!-- Advertisement Section End -->
 
 
 
-                <!-- Team Member Section -->
-                <!-- <div class="section-space-md-y">
+            <!-- Team Member Section -->
+            <!-- <div class="section-space-md-y">
                     <div class="section-space-md-bottom text-center">
                         <div class="container">
                             <div class="row justify-content-center">
@@ -1110,11 +1098,11 @@
                         </div>
                     </div>
                 </div> -->
-                <!-- Team Member Section End -->
+            <!-- Team Member Section End -->
 
-            </div>
+            <!-- </div> -->
             <!-- Footer -->
-            <footer class="position-relative z-1 overflow-hidden">
+            <footer class="position-relative z-1 overflow-hidden" style="background-color: #212529; color: #f8f9fa;">
                 <div class="section-space-lg-y">
                     <div class="container">
                         <div class="row g-4">
@@ -1125,16 +1113,18 @@
                                             class="logo__img logo__img--light">
                                         <img src="/images/InfiSpArk.png" alt="image" class="logo__img logo__img--dark">
                                     </a>
-                                    <p class="mb-8"> We craft custom software and deliver
+                                    <p class="mb-8" style="color: #adb5bd;"> We craft custom software and deliver
                                         modern digital experiences that inspire and empower businesses worldwide. </p>
                                     <ul class="list list-row gap-3 flex-wrap align-items-center">
                                         <li>
-                                            <a href="https://www.linkedin.com/company/infisparks/" class="btn btn-icon btn-dark-emphasis rounded-circle">
+                                            <a href="https://www.linkedin.com/company/infisparks/"
+                                                class="btn btn-icon btn-dark-emphasis rounded-circle">
                                                 <iconify-icon icon="akar-icons:linkedin-fill"></iconify-icon>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="https://www.instagram.com/official_infispark?utm_source=ig_web_button_share_sheet&igsh=MWN3YXRqYXRreWpnYQ==" class="btn btn-icon btn-dark-emphasis rounded-circle">
+                                            <a href="https://www.instagram.com/official_infispark?utm_source=ig_web_button_share_sheet&igsh=MWN3YXRqYXRreWpnYQ=="
+                                                class="btn btn-icon btn-dark-emphasis rounded-circle">
                                                 <iconify-icon icon="hugeicons:instagram"></iconify-icon>
                                             </a>
                                         </li>
@@ -1154,65 +1144,74 @@
                             <div class="col-lg-8">
                                 <div class="row g-4 justify-content-xxl-around">
                                     <div class="col-sm-6 col-md-3 col-xxl-3">
-                                        <h6 class="mb-6">Company</h6>
+                                        <h6 class="mb-6" style="color: #ffffff;">Company</h6>
                                         <ul class="list gap-2">
                                             <li>
                                                 <a href="/"
-                                                    class="link d-inline-block text-body hover:text-primary-emphasis fw-medium fs-14">
-                                                    Home </a>
+                                                    class="link d-inline-block text-body hover:text-primary-emphasis fw-medium fs-14"
+                                                    style="color: #adb5bd !important;"> Home </a>
                                             </li>
                                             <li>
                                                 <a href="/aboutus/"
-                                                    class="link d-inline-block text-body hover:text-primary-emphasis fw-medium fs-14">
-                                                    About Us </a>
+                                                    class="link d-inline-block text-body hover:text-primary-emphasis fw-medium fs-14"
+                                                    style="color: #adb5bd !important;"> About Us </a>
                                             </li>
                                             <li>
                                                 <a href="/service/"
-                                                    class="link d-inline-block text-body hover:text-primary-emphasis fw-medium fs-14">
-                                                    Service </a>
+                                                    class="link d-inline-block text-body hover:text-primary-emphasis fw-medium fs-14"
+                                                    style="color: #adb5bd !important;"> Service </a>
                                             </li>
                                             <li>
                                                 <a href="/contactus/"
-                                                    class="link d-inline-block text-body hover:text-primary-emphasis fw-medium fs-14">
-                                                    Contact Us </a>
+                                                    class="link d-inline-block text-body hover:text-primary-emphasis fw-medium fs-14"
+                                                    style="color: #adb5bd !important;"> Contact Us </a>
                                             </li>
                                         </ul>
                                     </div>
                                     <div class="col-sm-6 col-md-4">
-                                        <h6 class="mb-6">Contact Info</h6>
+                                        <h6 class="mb-6" style="color: #ffffff;">Contact Info</h6>
                                         <ul class="list gap-2">
                                             <li>
-                                                <span class="d-block text-body fw-medium fs-14">
+                                                <span class="d-block text-body fw-medium fs-14"
+                                                    style="color: #adb5bd !important;">
                                                     Email: infisparks@gmail.com </span>
                                             </li>
                                             <li>
-                                                <span class="d-block text-body fw-medium fs-14">
-                                                    Phone: +91 99583 99157 </span>
+                                                <div style="display: flex; flex-direction: column; line-height: 1.4;">
+                                                    <span class="text-body fw-medium fs-14"
+                                                        style="color: #adb5bd !important;">
+                                                        Phone: +91 99583 99157
+                                                    </span>
+                                                    <span class="text-body fw-medium fs-14"
+                                                        style="color: #adb5bd !important; padding-left: 52px; margin-top: 2px;">
+                                                        +91 81088 21353
+                                                    </span>
+                                                </div>
                                             </li>
-                                            <!-- <li>
-                                                <span class="d-block text-body fw-medium fs-14">
-                                                    +91 81088 21353 </span>
-                                            </li> -->
                                             <li>
-                                                <span class="d-block text-body fw-medium fs-14">
+                                                <span class="d-block text-body fw-medium fs-14"
+                                                    style="color: #adb5bd !important;">
                                                     Address: G Block BKC, Bandra Kurla Complex, Bandra East, Mumbai,
                                                     Maharashtra 400051 </span>
                                             </li>
                                         </ul>
                                     </div>
                                     <div class="col-sm-6 col-md-3">
-                                        <h6 class="mb-6">Working Hours</h6>
+                                        <h6 class="mb-6" style="color: #ffffff;">Working Hours</h6>
                                         <ul class="list gap-2">
                                             <li>
-                                                <span class="d-block text-body fw-medium fs-14">
+                                                <span class="d-block text-body fw-medium fs-14"
+                                                    style="color: #adb5bd !important;">
                                                     Mon - Fri: 9:00 AM - 6:00 PM (IST) </span>
                                             </li>
                                             <li>
-                                                <span class="d-block text-body fw-medium fs-14">
+                                                <span class="d-block text-body fw-medium fs-14"
+                                                    style="color: #adb5bd !important;">
                                                     Saturday: 10:00 AM - 4:00 PM </span>
                                             </li>
                                             <li>
-                                                <span class="d-block text-body fw-medium fs-14">
+                                                <span class="d-block text-body fw-medium fs-14"
+                                                    style="color: #adb5bd !important;">
                                                     Sunday: By Appointment </span>
                                             </li>
                                         </ul>
@@ -1229,21 +1228,20 @@
                                 <ul
                                     class="list list-row list-dot list-dot--md list-dot--secondary-emphasis flex-wrap align-items-center justify-content-center justify-content-lg-start">
                                     <li>
-                                        <span class="d-inline-block fs-14"> © 2025 Infisparks Technology </span>
+                                        <span class="d-inline-block fs-14" style="color: #adb5bd;"> © 2025 Infisparks
+                                            Technology </span>
                                     </li>
                                     <li>
-                                        <a href="#"
-                                            class="link d-inline-block text-body hover:text-primary fs-14"> Terms of Use
-                                        </a>
+                                        <a href="#" class="link d-inline-block text-body hover:text-primary fs-14"
+                                            style="color: #adb5bd !important;"> Terms of Use </a>
                                     </li>
                                     <li>
-                                        <a href="#" class="link d-inline-block text-body hover:text-primary fs-14">
-                                            Security </a>
+                                        <a href="#" class="link d-inline-block text-body hover:text-primary fs-14"
+                                            style="color: #adb5bd !important;"> Security </a>
                                     </li>
                                     <li>
-                                        <a href="#"
-                                            class="link d-inline-block text-body hover:text-primary fs-14"> Privacy
-                                            Policy </a>
+                                        <a href="#" class="link d-inline-block text-body hover:text-primary fs-14"
+                                            style="color: #adb5bd !important;"> Privacy Policy </a>
                                     </li>
                                 </ul>
                             </div>
@@ -1286,41 +1284,8 @@
                 </div>
                 <img src="/images/footer-2-grid.png" alt="image"
                     class="img-fluid position-absolute start-50 bottom-0 translate-middle-x z-n1 pointer-none">
-                <svg width="860" height="579" viewBox="0 0 860 579" fill="none" xmlns="http://www.w3.org/2000/svg"
-                    class="position-absolute z-n1 start-0 top-0 pointer-none">
-                    <g filter="url(#filter0_f_10034_5037)">
-                        <path
-                            d="M169.847 11.8444C151.014 -24.0114 128.472 -103.643 82.4746 -110.489C43.9821 -116.218 33.7393 -2.76055 87.0576 100.521C215.664 305.212 328.779 330.576 432.07 345.949C535.361 361.322 587.664 315.572 592.476 283.235C597.289 250.899 573.027 200.25 405.023 175.245C237.020 150.241 188.679 47.7002 169.847 11.8444Z"
-                            fill="#00C4FD" fill-opacity="0.2"></path>
-                    </g>
-                    <defs>
-                        <filter id="filter0_f_10034_5037" x="-216.362" y="-377.364" width="1076.05" height="993.048"
-                            filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                            <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
-                            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend>
-                            <feGaussianBlur stdDeviation="133.333" result="effect1_foregroundBlur_10034_5037">
-                            </feGaussianBlur>
-                        </filter>
-                    </defs>
-                </svg>
-                <svg width="691" height="579" viewBox="0 0 691 579" fill="none" xmlns="http://www.w3.org/2000/svg"
-                    class="position-absolute z-n1 end-0 top-0 pointer-none">
-                    <g filter="url(#filter0_f_10034_5038)">
-                        <path
-                            d="M724.978 62.1383C748.883 29.4456 782.903 -46 829.407 -46C868.323 -46 861.752 67.7293 793.81 162.036C636.472 345.564 520.855 354 416.426 354C311.998 354 267 301.048 267 268.356C267 235.663 298.454 189.138 468.309 189.138C638.162 189.138 701.072 94.8311 724.978 62.1383Z"
-                            fill="#6328FF" fill-opacity="0.2"></path>
-                    </g>
-                    <defs>
-                        <filter id="filter0_f_10034_5038" x="0.333405" y="-312.667" width="1119.59" height="933.333"
-                            filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                            <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
-                            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"></feBlend>
-                            <feGaussianBlur stdDeviation="133.333" result="effect1_foregroundBlur_10034_5038">
-                            </feGaussianBlur>
-                        </filter>
-                    </defs>
-                </svg>
             </footer>
+
             <!-- Footer End -->
         </div>
     </div>
