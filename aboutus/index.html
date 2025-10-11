@@ -103,6 +103,21 @@
         <div id="smooth-content">
 
             <!-- Banner Section -->
+            <style>
+                /* Media query for mobile devices 
+  (screens 767px wide or smaller) 
+*/
+                @media (max-width: 767px) {
+                    .banner-5 {
+                        /* IMPORTANT: Replace '/images/about-bg-banner-mobile-img.png' 
+          with the actual path to your mobile-specific image.
+          !important is necessary to override the inline style. 
+        */
+                        background-image: url('/images/about-bg-banner-mobile-img.png') !important;
+                    }
+                }
+            </style>
+
             <div class="banner-5" style="
     background-image: url('/images/about-bg-banner-img.png');
     background-size: cover;
