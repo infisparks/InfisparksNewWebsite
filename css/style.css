@@ -771,6 +771,49 @@ small,
 .banner-1__froster-svg-path {
     animation: animateFill 20s infinite linear alternate;
 }
+
+
+
+
+
+.banner-5 {
+    background-image: url(../images/banner-grid-shape.png);
+    background-color: var(--bs-body-bg);
+    overflow: hidden;
+}
+.banner-5__content {
+    padding-block-start: clamp(6rem, 9vw + 1rem, 11.875rem);
+    padding-block-end: clamp(4.5rem, 6.5vw + 1rem, 8rem);
+    position: relative;
+    z-index: 1;
+}
+
+@media (min-width: 1200px) {
+    .banner-5__content::before {
+        right: 19%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .banner-5__content::after {
+        right: 35%;
+    }
+}
+.banner-5__froster-svg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+}
+.banner-5__froster-svg-path {
+    animation: animateFill 20s infinite linear alternate;
+}
+
+
+
+
+
 .banner-2 {
     background-image: url(../images/banner-grid-shape-2.png);
     background-color: var(--bs-dark);
